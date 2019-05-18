@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>编制项目投资现金流量表</title>
+<script type="text/javascript">
+	function YearGoldCal(nianlilv,huankuanqi){
+		//求还款年金
+		return nianlilv/(1-Math.pow(1+nianlilv,-huankuanqi));
+	}
+	function Init_array(arr,cows){
+		//初始化数组
+		for(var i=0;i<=cows;i++){
+			arr[i]="";
+		}
+	}
+	function printRes(xianjianliuru,yingyeshouru,butieshouru,xiaoxiangshuie,huishouzichanyuzhi,huishouliudongzijin,xianjinliuchu,yongyujianshetouzidexiangmuzijin,yongyuliudongzijindexiangmujinzijin,jiekuanbenjinchanghuan,jiekuanlixizhifu,jingyingchengben,jinxiangshuie,yingjiaozengzhishui,shuijinjifujia,suodeshui,jingxianjinliuliang,leijitiaozhengsuodeshuiqianjingxianjinliuliang,tiaozhengsuodeshui,tiaozhengsuodeshuihoujingxianjinliuliang,leijitiaozhengsuodeshuihoujingxiangjinliuliang,cows){
+		//输出结果
+		var str='';
+		//表头
+		str+="<table border='1' rules='1' width='100%'><caption>编制项目投资现金流量表</caption><tr><th>序号</th><th>项目</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+i+"</th>";
+		}
+		str+="</tr>";
+		//1、现金流入
+		str+="<tr><th>1</th><th>现金流入</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+xianjianliuru[i]+"</th>";
+		}
+		str+="</tr>";
+		//1.1、营业收入
+		str+="<tr><th>1.1</th><th>营业收入</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+yingyeshouru[i]+"</th>";
+		}
+		str+="</tr>";
+		//1.2、补贴收入
+		str+="<tr><th>1.2</th><th>补贴收入</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+butieshouru[i]+"</th>";
+		}
+		str+="</tr>";
+		//1.3、销项税额
+		str+="<tr><th>1.3</th><th>销项税额</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+xiaoxiangshuie[i]+"</th>";
+		}
+		str+="</tr>";
+		//1.4、回收资产余值
+		str+="<tr><th>1.4</th><th>回收资产余值</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+huishouzichanyuzhi[i]+"</th>";
+		}
+		str+="</tr>";
+		//1.5、回收流动资金
+		str+="<tr><th>1.5</th><th>回收流动资金</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+huishouliudongzijin[i]+"</th>";
+		}
+		str+="</tr>";
+		//2、现金流出
+		str+="<tr><th>2</th><th>现金流出</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+xianjinliuchu[i]+"</th>";
+		}
+		str+="</tr>";
+		//2.1、用于建设投资的项目资本金
+		str+="<tr><th>2.1</th><th>用于建设投资的项目资本金</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+yongyujianshetouzidexiangmuzijin[i]+"</th>";
+		}
+		str+="</tr>";
+		//2.2、用于流动资金的项目资本金
+		str+="<tr><th>2.2</th><th>用于流动资金的项目资本金</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+yongyuliudongzijindexiangmujinzijin[i]+"</th>";
+		}
+		str+="</tr>";
+		//2.3、借款本金偿还
+		str+="<tr><th>2.3</th><th>借款本金偿还</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+jiekuanbenjinchanghuan[i]+"</th>";
+		}
+		str+="</tr>";
+		//2.4、借款利息支付
+		str+="<tr><th>2.4</th><th>借款利息支付</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+jiekuanlixizhifu[i]+"</th>";
+		}
+		str+="</tr>";
+		//2.5、经营成本
+		str+="<tr><th>2.5</th><th>经营成本</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+jingyingchengben[i]+"</th>";
+		}
+		str+="</tr>";
+		//2.6、进项税额
+		str+="<tr><th>2.6</th><th>进项税额</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+jinxiangshuie[i]+"</th>";
+		}
+		str+="</tr>";
+		//2.7、应交增值税
+		str+="<tr><th>2.7</th><th>应交增值税</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+yingjiaozengzhishui[i]+"</th>";
+		}
+		str+="</tr>";
+		//2.8、税金及附加
+		str+="<tr><th>2.8</th><th>税金及附加</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+shuijinjifujia[i]+"</th>";
+		}
+		str+="</tr>";
+		//2.9、所得税
+		str+="<tr><th>2.9</th><th>所得税</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+suodeshui[i]+"</th>";
+		}
+		str+="</tr>";
+		//3、净现金流量
+		str+="<tr><th>3</th><th>净现金流量</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+jingxianjinliuliang[i]+"</th>";
+		}
+		str+="</tr>";
+		//4、累计调整所得税前净现金流量
+		str+="<tr><th>4</th><th>累计调整所得税前净现金流量</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+leijitiaozhengsuodeshuiqianjingxianjinliuliang[i]+"</th>";
+		}
+		str+="</tr>";
+		//5、调整所得税
+		str+="<tr><th>5</th><th>调整所得税</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+tiaozhengsuodeshui[i]+"</th>";
+		}
+		str+="</tr>";
+		//6、调整所得税后净现金流
+		str+="<tr><th>6</th><th>调整所得税后净现金流</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+tiaozhengsuodeshuihoujingxianjinliuliang[i]+"</th>";
+		}
+		str+="</tr>";
+		//7、累计调整所得税后净现金流量
+		str+="<tr><th>7</th><th>累计调整所得税后净现金流量</th>";
+		for(var i=1;i<=cows;i++){
+			str+="<th>"+leijitiaozhengsuodeshuihoujingxiangjinliuliang[i]+"</th>";
+		}
+		str+="</tr></table>";
+		document.write(str);
+	}
+	function caculate(){
+		//初始变量
+		var xiangmuzibenjin=document.getElementById("xiangmuzibenjin").value*1.0;
+		var touzijiekuan=document.getElementById("touzijiekuan").value*1.0;
+		var nianlilv=document.getElementById("nianlilv").value*1.0;
+		var huankuanqi=document.getElementById("huankuanqi").value*1.0;
+		var gudingzichan=document.getElementById("gudingzichan").value*1.0;
+		var wuxingzichan=document.getElementById("wuxingzichan").value*1.0;
+		var qitazichan=document.getElementById("qitazichan").value*1.0;
+		var xiangmujiansheqi=document.getElementById("xiangmujiansheqi").value*1.0;
+		var yunyingqi=document.getElementById("yunyingqi").value*1.0;
+		var diyinianfuhe=document.getElementById("diyinianfuhe").value*1.0;
+		var manfuheshiliudongzijin=document.getElementById("manfuheshiliudongzijin").value*1.0;
+		var touchandiyinianliudongzijingusuan=document.getElementById("touchandiyinianliudongzijingusuan").value*1.0;
+		var manfuheyinyeshouru=document.getElementById("manfuheyinyeshouru").value*1.0;
+		var jinyinchengben=document.getElementById("jinyinchengben").value*1.0;
+		var yuancailiaoheranliaodonglifei=document.getElementById("yuancailiaoheranliaodonglifei").value*1.0;
+		var touruhechanchudezengzhishuishuilv=document.getElementById("touruhechanchudezengzhishuishuilv").value*1.0;
+		var fujiashui=document.getElementById("fujiashui").value*1.0;
+		var qiyesuodeshui=document.getElementById("qiyesuodeshui").value*1.0;
+		var zhejiunianxianhetanxiaonianxian=document.getElementById("zhejiunianxianhetanxiaonianxian").value*1.0;
+		var gudingzichanjingcanzhilv=document.getElementById("gudingzichanjingcanzhilv").value*1.0;
+		var gudingzichanzhongbudongchanbufenyunxudikoudezengzhishuijinxiangshuie=document.getElementById("gudingzichanzhongbudongchanbufenyunxudikoudezengzhishuijinxiangshuie").value*1.0;
+		var budongchandiyiniandikoubaifenbi=document.getElementById("budongchandiyiniandikoubaifenbi").value*1.0;
+		var budongchandierniandikoubaifenbi=document.getElementById("budongchandierniandikoubaifenbi").value*1.0;
+		var dongchanbufenyunxudikoudezengzhishuijinxiangshuie=document.getElementById("dongchanbufenyunxudikoudezengzhishuijinxiangshuie").value*1.0;
+		var wuxingzichanhzhongyunxudikoudezengzhishuijinxiangshuie=document.getElementById("wuxingzichanhzhongyunxudikoudezengzhishuijinxiangshuie").value*1.0;
+
+		//计算建设期利息  每年等额还本付息额  回收流动资金  回收固定资产
+		var cal_huishouliudongzijin=manfuheshiliudongzijin*1.0;
+		var cal_huishougudingzichanyuzhi=(gudingzichan*1.0-+touchandiyinianliudongzijingusuan*1.0)*gudingzichanjingcanzhilv*1.0;
+		var cal_jianseqilixi=0;
+		var cal_meiniandengehuanbenfuxie=0;
+		if(touzijiekuan){
+			var cal_jianseqilixi=touzijiekuan*nianlilv*0.5;
+			cal_meiniandengehuanbenfuxie=(touzijiekuan*1.0+cal_jianseqilixi*1.0)*YearGoldCal(nianlilv,huankuanqi);
+		}
+		//计算折旧 摊销
+		var cal_zhejiu=(gudingzichan*1.0-+gudingzichanzhongbudongchanbufenyunxudikoudezengzhishuijinxiangshuie*1.0-dongchanbufenyunxudikoudezengzhishuijinxiangshuie*1.0+cal_jianseqilixi*1.0)*(1-gudingzichanjingcanzhilv)/zhejiunianxianhetanxiaonianxian*1.0;
+		var cal_wuxingzichanniantanxiaoe=(wuxingzichan*1.0-wuxingzichanhzhongyunxudikoudezengzhishuijinxiangshuie*1.0)/zhejiunianxianhetanxiaonianxian*1.0;
+		var cal_qitazichanniantanxiaoe=qitazichan*1.0/zhejiunianxianhetanxiaonianxian*1.0;
+
+		//当年营业收入  计算销项税额  经营成本  进项税额
+		var arr_yingyeshouru=[];
+		Init_array(arr_yingyeshouru,xiangmujiansheqi+yunyingqi);
+		var arr_xiaoxiangshuie=[];
+		Init_array(arr_xiaoxiangshuie,xiangmujiansheqi+yunyingqi);
+		var arr_jingyingchengben=[];
+		Init_array(arr_jingyingchengben,xiangmujiansheqi+yunyingqi);
+		var arr_jinxiangshuie=[];
+		Init_array(arr_jinxiangshuie,xiangmujiansheqi+yunyingqi);
+		for(var i=2;i<=xiangmujiansheqi+yunyingqi;i++){
+			var fuhe=1;
+			if(i==2)fuhe=diyinianfuhe;
+			arr_yingyeshouru[i]=fuhe*manfuheyinyeshouru*1.0;
+			arr_xiaoxiangshuie[i]=arr_yingyeshouru[i]*touruhechanchudezengzhishuishuilv*1.0;
+			arr_jingyingchengben[i]=fuhe*yuancailiaoheranliaodonglifei*1.0+jinyinchengben*1.0-+yuancailiaoheranliaodonglifei*1.0;
+			arr_jinxiangshuie[i]=fuhe*yuancailiaoheranliaodonglifei*touruhechanchudezengzhishuishuilv*1.0;
+		}
+		//计算应交增值税 税金及附加
+		var arr_yingjiaozengzhishui=[];
+		Init_array(arr_yingjiaozengzhishui,xiangmujiansheqi+yunyingqi);
+		var arr_shuijinjifujia=[]
+		Init_array(arr_shuijinjifujia,xiangmujiansheqi+yunyingqi);
+		for(var i=xiangmujiansheqi+1;i<=xiangmujiansheqi+yunyingqi;i++){
+			var para_gudingzicbudongbufenyunxudikoubaifenbi=0;
+			var par_gudingzicdongchanyunxudikoudejine=0;
+			var para_wuxingzic=0;
+			if(i==2&&budongchandiyiniandikoubaifenbi){
+				para_gudingzicbudongbufenyunxudikoubaifenbi=budongchandiyiniandikoubaifenbi*1.0;
+				par_gudingzicdongchanyunxudikoudejine=1;
+				para_wuxingzic=1;
+			}
+			if(i==3&&budongchandierniandikoubaifenbi)para_gudingzicbudongbufenyunxudikoubaifenbi=budongchandierniandikoubaifenbi*1.0;
+
+			arr_yingjiaozengzhishui[i]=arr_xiaoxiangshuie[i]*1.0-+arr_jinxiangshuie[i]*1.0-+gudingzichanzhongbudongchanbufenyunxudikoudezengzhishuijinxiangshuie*para_gudingzicbudongbufenyunxudikoubaifenbi*1.0-+par_gudingzicdongchanyunxudikoudejine*dongchanbufenyunxudikoudezengzhishuijinxiangshuie*1.0-+wuxingzichanhzhongyunxudikoudezengzhishuijinxiangshuie*para_wuxingzic+(arr_yingjiaozengzhishui[i-1]<0?arr_yingjiaozengzhishui[i-1]:0)*1.0;
+			arr_shuijinjifujia[i]=arr_yingjiaozengzhishui[i]*fujiashui*1.0;
+		}
+		for(var i=xiangmujiansheqi+1;i<=xiangmujiansheqi+yunyingqi;i++){
+			if(arr_yingjiaozengzhishui[i]<0)arr_yingjiaozengzhishui[i]=0;
+			if(arr_shuijinjifujia[i]<0)arr_shuijinjifujia[i]=0;
+		}
+		//计算借款余额  本年应计利息 借款本金偿还
+		var arr_jiekuanbenjincanghuan=[];
+		Init_array(arr_jiekuanbenjincanghuan,xiangmujiansheqi+yunyingqi);
+		var arr_jiekuanyue=[];
+		Init_array(arr_jiekuanyue,xiangmujiansheqi+yunyingqi);
+		var arr_bennianyignjilixi=[];
+		Init_array(arr_bennianyignjilixi,xiangmujiansheqi+yunyingqi);
+		arr_jiekuanyue[2]=touzijiekuan*1.0+cal_jianseqilixi*1.0;
+		arr_bennianyignjilixi[2]=arr_jiekuanyue[2]*nianlilv*1.0;
+		arr_jiekuanbenjincanghuan[2]=cal_meiniandengehuanbenfuxie*1.0-+arr_bennianyignjilixi[2]*1.0;
+		for(var i=xiangmujiansheqi+2;i<=xiangmujiansheqi+huankuanqi;i++){
+			arr_jiekuanyue[i]=arr_jiekuanyue[i-1]*1.0+arr_bennianyignjilixi[i-1]*1.0-+cal_meiniandengehuanbenfuxie*1.0;
+			arr_bennianyignjilixi[i]=arr_jiekuanyue[i]*nianlilv*1.0;
+			arr_jiekuanbenjincanghuan[i]=cal_meiniandengehuanbenfuxie*1.0-+arr_bennianyignjilixi[i]*1.0;
+		}
+		//本年应纳税所得额 所得税数组
+		var arr_bennianyingnasuodee=[]
+		Init_array(arr_bennianyingnasuodee,xiangmujiansheqi+yunyingqi);
+		var arr_suodeshui=[];
+		Init_array(arr_suodeshui,xiangmujiansheqi+yunyingqi);
+		for(var i=xiangmujiansheqi+1;i<=xiangmujiansheqi+yunyingqi;i++){
+			arr_bennianyingnasuodee[i]=arr_yingyeshouru[i]*1.0-+arr_jingyingchengben[i]*1.0-+cal_zhejiu*1.0-+cal_qitazichanniantanxiaoe*1.0-+cal_wuxingzichanniantanxiaoe*1.0-+arr_bennianyignjilixi[i]*1.0-+arr_shuijinjifujia[i]*1.0+(arr_bennianyingnasuodee[i-1]<0?arr_bennianyingnasuodee[i-1]:0)*1.0;
+			arr_suodeshui[i]=arr_bennianyingnasuodee[i]*qiyesuodeshui*1.0;
+		}
+		for(var i=xiangmujiansheqi+1;i<xiangmujiansheqi+yunyingqi;i++){
+			if(arr_suodeshui[i]<0)arr_suodeshui[i]=0;
+		}
+		// 建立回收资产余值数组   回收流动资金
+		var arr_huishouzichanyuzhi=[]
+		Init_array(arr_huishouzichanyuzhi,xiangmujiansheqi+yunyingqi);
+		var arr_huishouliudongzijin=[];
+		Init_array(arr_huishouliudongzijin,xiangmujiansheqi+yunyingqi);
+		arr_huishouzichanyuzhi[xiangmujiansheqi+yunyingqi]=(gudingzichan-+gudingzichanzhongbudongchanbufenyunxudikoudezengzhishuijinxiangshuie-+dongchanbufenyunxudikoudezengzhishuijinxiangshuie+cal_jianseqilixi)*gudingzichanjingcanzhilv;
+		arr_huishouliudongzijin[xiangmujiansheqi+yunyingqi]=cal_huishouliudongzijin*1.0;
+		//建立补贴收入数组  现金流入
+		var arr_butieshouru=[]
+		Init_array(arr_butieshouru,xiangmujiansheqi+yunyingqi);
+		var arr_xianjinliuru=[];
+		Init_array(arr_xianjinliuru,xiangmujiansheqi+yunyingqi);
+		for(var i=xiangmujiansheqi;i<=xiangmujiansheqi+yunyingqi;i++){
+			arr_xianjinliuru[i]=arr_yingyeshouru[i]*1.0+arr_butieshouru[i]*1.0+arr_xiaoxiangshuie[i]*1.0+arr_huishouzichanyuzhi[i]*1.0+arr_huishouliudongzijin[i]*1.0;
+		}
+		//建立用于建设投资的项目资本金数组
+		var arr_yongyujianshetouzidexaingmuzibenjin=[];
+		Init_array(arr_yongyujianshetouzidexaingmuzibenjin,xiangmujiansheqi+yunyingqi);
+		arr_yongyujianshetouzidexaingmuzibenjin[1]=xiangmuzibenjin*1.0;
+		//建立用于流动资金的项目资本金数组
+		var arr_yongyuliudongzijindexiangmuzibenjin=[];
+		Init_array(arr_yongyuliudongzijindexiangmuzibenjin,xiangmujiansheqi+yunyingqi);
+		arr_yongyuliudongzijindexiangmuzibenjin[2]=touchandiyinianliudongzijingusuan*1.0;
+		arr_yongyuliudongzijindexiangmuzibenjin[3]=manfuheshiliudongzijin*1.0-+touchandiyinianliudongzijingusuan*1.0;
+		//建立现金流出数组
+		var arr_xianjinliuchu=[];
+		Init_array(arr_xianjinliuchu,xiangmujiansheqi+yunyingqi);
+		for(var i=xiangmujiansheqi;i<=xiangmujiansheqi+yunyingqi;i++){
+			arr_xianjinliuchu[i]=arr_yongyujianshetouzidexaingmuzibenjin[i]*1.0+arr_yongyuliudongzijindexiangmuzibenjin[i]*1.0+arr_jiekuanbenjincanghuan[i]*1.0+arr_bennianyignjilixi[i]*1.0+arr_jingyingchengben[i]*1.0+arr_jinxiangshuie[i]*1.0+arr_yingjiaozengzhishui[i]*1.0+arr_shuijinjifujia[i]*1.0+arr_suodeshui[i]*1.0;
+		}
+		//建立净现金流量数组
+		var arr_jingxianjinliuliang=[];
+		Init_array(arr_jingxianjinliuliang,xiangmujiansheqi+yunyingqi);
+		for(var i=xiangmujiansheqi;i<=xiangmujiansheqi+yunyingqi;i++){
+			arr_jingxianjinliuliang[i]=arr_xianjinliuru[i]*1.0-+arr_xianjinliuchu[i]*1.0;
+		}
+		//建立累计所得税前净现金流量数组  调整所得税数组 调整所得税后净现金流量  累计调整所得税后净现金流量
+		//建立累计调整所得税前净现金流量数组
+		var arr_leijitiaozhengsuodeshuiqianjingxianjinliuliang=[];
+		Init_array(arr_leijitiaozhengsuodeshuiqianjingxianjinliuliang,xiangmujiansheqi+yunyingqi);
+		for(var i=1;i<=xiangmujiansheqi+yunyingqi;i++){
+			arr_leijitiaozhengsuodeshuiqianjingxianjinliuliang[i]=arr_leijitiaozhengsuodeshuiqianjingxianjinliuliang[i-1]*1.0+arr_jingxianjinliuliang[i]*1.0;
+		}
+		//建立息税前利润数组  调整所得税数组
+		var arr_xishuiqianlirun=[];
+		Init_array(arr_xishuiqianlirun,xiangmujiansheqi+yunyingqi);
+		var arr_tiaozhengsuodeshui=[];
+		Init_array(arr_tiaozhengsuodeshui,xiangmujiansheqi+yunyingqi);
+		for(var i=xiangmujiansheqi+1;i<xiangmujiansheqi+yunyingqi;i++){
+			arr_xishuiqianlirun[i]=arr_yingyeshouru[i]*1.0-arr_jingyingchengben[i]*1.0-cal_zhejiu-+cal_qitazichanniantanxiaoe*1.0-+cal_wuxingzichanniantanxiaoe*1.0-+arr_shuijinjifujia[i]*1.0+(arr_xishuiqianlirun[i-1]<0?arr_xishuiqianlirun[i-1]:0)*1.0;
+			arr_tiaozhengsuodeshui[i]=arr_xishuiqianlirun[i]*1.0*qiyesuodeshui;
+		}
+		for(var i=xiangmujiansheqi+1;i<xiangmujiansheqi+yunyingqi;i++){
+			if(arr_tiaozhengsuodeshui[i]<0)arr_tiaozhengsuodeshui[i]=0;
+		}
+		//建立调整所得税后净现金流量数组
+		var arr_tiaozhengsuodeshuihoujingxianjinliuliang=[];
+		Init_array(arr_tiaozhengsuodeshuihoujingxianjinliuliang,xiangmujiansheqi+yunyingqi);
+		for(var i=1;i<=xiangmujiansheqi+yunyingqi;i++){
+			arr_tiaozhengsuodeshuihoujingxianjinliuliang[i]=arr_jingxianjinliuliang[i]-arr_tiaozhengsuodeshui[i];
+		}
+		//建立累计调整所得税后净现金流量
+		var arr_leijitiaozhengsuodeshuihoujingxianjinliuliang=[];
+		Init_array(arr_leijitiaozhengsuodeshuihoujingxianjinliuliang,xiangmujiansheqi+yunyingqi);
+		for(var i=1;i<=xiangmujiansheqi+yunyingqi;i++){
+			arr_leijitiaozhengsuodeshuihoujingxianjinliuliang[i]=arr_leijitiaozhengsuodeshuihoujingxianjinliuliang[i-1]*1.0+arr_tiaozhengsuodeshuihoujingxianjinliuliang[i]*1.0;
+		}
+
+		//打印结果
+		printRes(arr_xianjinliuru,arr_yingyeshouru,arr_butieshouru,arr_xiaoxiangshuie,arr_huishouzichanyuzhi,arr_huishouliudongzijin,arr_xianjinliuchu,arr_yongyujianshetouzidexaingmuzibenjin,arr_yongyuliudongzijindexiangmuzibenjin,arr_jiekuanbenjincanghuan,arr_bennianyignjilixi,arr_jingyingchengben,arr_jinxiangshuie,arr_yingjiaozengzhishui,arr_shuijinjifujia,arr_suodeshui,arr_jingxianjinliuliang,arr_leijitiaozhengsuodeshuiqianjingxianjinliuliang,arr_tiaozhengsuodeshui,arr_tiaozhengsuodeshuihoujingxianjinliuliang,arr_leijitiaozhengsuodeshuihoujingxianjinliuliang,xiangmujiansheqi+yunyingqi);
+	}
+</script>
+</head>
+<body>
+<form onsubmit="return caculate()" method="get" id="form1" name="form1">
+	<p>项目资本金<input type="text" id ="xiangmuzibenjin" value="4000"/>投资借款<input type="text" id="touzijiekuan" value="5000"/></p>
+	<p>年利率<input type="text" id="nianlilv" value="0.06" />还款期<input type="text" id="huankuanqi" value="3"/>采用等额还本付息方式</p>
+	<p>形成的固定资产<input type="text" id="gudingzichan" value="8000"/>形成的无形资产<input type="text" id="wuxingzichan" value="800" />形成的其他资产<input type="text" id="qitazichan" value="200" /></p>
+	<p>项目建设期<input type="text" id="xiangmujiansheqi" value="1" />运营期<input type="text" id="yunyingqi" value="6" /></p>
+	<p>第一年负荷<input type="text" id="diyinianfuhe" value="0.6" />其他年满负荷</p>
+	<p>满负荷时流动资金<input type="text" id="manfuheshiliudongzijin" value="1200" />投产第一年流动资金估算<input type="textf" id="touchandiyinianliudongzijingusuan" value="800" /></p>
+	<p>计算期末将全部流动资金回收</p>
+	<p>运营期内满负荷时，营业收入<input type="text" id="manfuheyinyeshouru" value="6500" /></p>
+	<p>经营成本<input type="text" id="jinyinchengben" value="3500" />原材料和燃料动力费<input type="text" id="yuancailiaoheranliaodonglifei" value="2000" /></p>
+	<p>投入和产出的增值税税率<input type="text" id="touruhechanchudezengzhishuishuilv" value="0.16" /></p>
+	<p>附加率税总和<input type="text" id="fujiashui" value="0.12" /></p>
+	<p>企业所得税税率<input type="text" id="qiyesuodeshui" value="0.25" /></p>
+	<p>折旧年限和摊销年限年数<input type="text" id="zhejiunianxianhetanxiaonianxian" value="6"></p>
+	<p>固定资产净残值率<input type="text" id="gudingzichanjingcanzhilv" value="0.05" />无形资产及其他资产净残值为零</p>
+	<p>折旧和摊销均采用年限平均法</p>
+	<p>固定资产中不动产部分允许抵扣的增值税进项税额<input type="text" id="gudingzichanzhongbudongchanbufenyunxudikoudezengzhishuijinxiangshuie" value="500" />运营期第一年抵扣百分比<input type="tetx" id="budongchandiyiniandikoubaifenbi" value="0.6" />第二年抵扣百分比<input type="text" id="budongchandierniandikoubaifenbi" value="0.4" /></p>
+	<p>动产部分允许抵扣的增值税进项税额<input type="text" id="dongchanbufenyunxudikoudezengzhishuijinxiangshuie" value="300" />运营期第一年全部抵扣</p>
+	<p>无形资产中允许抵扣的增值税进项税额<input type="text" id="wuxingzichanhzhongyunxudikoudezengzhishuijinxiangshuie" value="80" />运营期第一年全部抵扣</p>
+	<p><input type="submit" value="计算" /></p>
+</form>
+</body>
+</html>
